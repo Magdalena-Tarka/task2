@@ -38,3 +38,18 @@ form {
     margin: 12px auto;
   }
 }
+
+.list-section {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin: 12px auto;
+    }
+
+    #clear-list-btn.hidden {
+      display: none;
+    }
+  }
+}

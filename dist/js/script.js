@@ -1,6 +1,6 @@
 'use strict';
 
-const books =[];
+const books = JSON.parse(localStorage.getItem('books') || '[]');
 
 // SELECTORS
 const form = document.getElementById('form');
@@ -9,6 +9,7 @@ const bookAuthor = document.getElementById('book-author');
 const category = document.getElementById('category');
 const priority = document.getElementById('priority');
 const tableBody = document.getElementById('table-body');
+const clearListButton = document.getElementById('clear-list-btn');
 
 // VALIDATION
 const validateInputs = () => {
@@ -58,6 +59,7 @@ const addBook = () => {
   };
 
   books.push(book);
+  localStorage.setItem('books', JSON.stringify(books));
 
   bookTitle.value = '';
   bookAuthor.value = '';
@@ -65,21 +67,19 @@ const addBook = () => {
   priority.value = 1;
 };
 
-// RENDER ADDED BOOK
-const renderAddedBook = () => {
-  let addedBook;
+// RENDER BOOKS
+const renderBooks = () => {
+  tableBody.innerHTML = '';
 
-  books.forEach(book => {
-    addedBook = `<tr>
-                  <td>${book.id}</td>
-                  <td>${book.bookTitle}</td>
-                  <td>${book.bookAuthor}</td>
-                  <td>${book.category}</td>
-                  <td>${book.priority}</td>
-                  </tr>`;
+  books.forEach(item => {
+    const tableRow = document.createElement('tr');
+    tableBody.appendChild(tableRow);
+    tableRow.innerHTML = `<td>${item.id}</td>
+                          <td>${item.bookTitle}</td>
+                          <td>${item.bookAuthor}</td>
+                          <td>${item.category}</td>
+                          <td>${item.priority}</td>`;
   });
-
-  tableBody.innerHTML = (addedBook);
 };
 
 // SUBMIT HANDLER
@@ -87,9 +87,20 @@ const submitHandler = (e) => {
   e.preventDefault();
   validateInputs();
   addBook();
-  renderAddedBook();
-
-  console.log('Book has been added!');
+  renderBooks();
+  clearListButton.classList.remove('hidden');
 };
 
+// CLEAR LIST
+const clearListHandler = () => {
+  localStorage.clear();
+  location.reload(true);
+  tableBody.innerHTML = '';
+  clearListButton.classList.add('hidden');
+};
+
+renderBooks();
+books.length && clearListButton.classList.remove('hidden');
+
 form.addEventListener('submit', submitHandler);
+clearListButton.addEventListener('click', clearListHandler);
