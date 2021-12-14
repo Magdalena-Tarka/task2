@@ -16,11 +16,11 @@
     </div>
   </header>
 
-  <main>
-    <div  class="row">
+  <main class="container">
+    <div class="row">
 
-      <section class="col-md-6 form-section">
-        <div class="container">
+      <section class="col-lg-6 form-section">
+        <div class="wrapper">
           <h2 class="section-title">Add your book</h2>
           <form id="form">
               <div class="form_input col">
@@ -78,7 +78,7 @@
                 <label for ="priority">Read priority (1-5)</label>
               </div>
 
-              <button class="btn btn-outline-secondary"
+              <button class="btn"
                 type="submit"
               >add book</button>
 
@@ -86,10 +86,10 @@
         </div>
       </section>
 
-      <section class="col-md-6 list-section">
-        <div class="container">
+      <section class="col-lg-6 list-section">
+        <div class="wrapper">
           <h2 class="section-title">List of your books</h2>
-          <table class="table table-light table-striped">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">id</th>
@@ -101,7 +101,7 @@
             </thead>
             <tbody class="table-body" id="table-body"></tbody>
           </table>
-          <button class="btn btn-outline-secondary hidden"
+          <button class="btn hidden"
             type="button"
             id="clear-list-btn"
           >clear list</button>

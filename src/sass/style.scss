@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  background: linear-gradient(30deg, #4CA1AF, #C4E0E5) no-repeat center fixed;
+  font-family: 'Roboto', sans-serif;
+}
+
 .header {
   .header_title {
     text-align: center;
     font-size: 24px;
-    margin: 5%;
+    margin: 5% 0 3% 0;
+    font-family: 'Cinzel', serif;
+    font-size: 50px;
   }
 }
 
@@ -13,7 +22,15 @@ section {
     font-size: 16px;
     margin: 0 0 24px 0;
     text-transform: uppercase;
+    font-weight: 600;
   }
+}
+
+button {
+  margin: 12px auto;
+  padding: 8px;
+  background: linear-gradient(30deg, #FF5F6D, #FFC371);
+  text-transform: uppercase;
 }
 
 form {
@@ -21,10 +38,19 @@ form {
   flex-direction: column;
 
   .form_input {
-    padding: 6px;
+    padding: 6px 0;
+
+    * {
+      background: transparent;
+    }
 
     .form-control, .form-select {
       border-radius: 15px;
+      border-color: #212529;
+    }
+
+    .form-control::placeholder {
+      color: #212529;
     }
   }
 
@@ -33,23 +59,30 @@ form {
     font-size: 12px;
     padding-left: 4px;
   }
+}
 
-  button {
-    margin: 12px auto;
+
+.list-section .wrapper {
+  display: flex;
+  flex-direction: column;
+
+  table {
+    * {
+      background: transparent;
+    }
+
+    tbody {
+      text-transform: capitalize;
+
+      tr {
+        border: none;
+        border-bottom: 1px solid #212529;
+      }
+    }
+  }
+
+  #clear-list-btn.hidden {
+    display: none;
   }
 }
 
-.list-section {
-  .container {
-    display: flex;
-    flex-direction: column;
-
-    button {
-      margin: 12px auto;
-    }
-
-    #clear-list-btn.hidden {
-      display: none;
-    }
-  }
-}
